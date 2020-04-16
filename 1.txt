@@ -1,0 +1,635 @@
+
+
+帮助命令
+man->mannual
+  帮助信息和配置信息
+
+  ============================    
+  	2020/4/8
+  ============================
+
+Linux:后端开发
+	Windows：个人应用
+	MAC:办公
+
+windows:
+计算机
+	|
+	+---C
+		|
+		+---Windows
+		+---System32
+
+		D:
+		|
+		+---自己分配的内容
+
+// 无文件夹，叫目录
+Linux:
+/ : 根文件，根目录
+
+/root: root的家目录
+
+/home/用户名：普通用户家目录
+
+/etc:配置文件
+
+/bin:普通命令
+
+/sbin：管理命令
+
+// 用户自己装的软件的命令，要有管理的权限
+/usr/bin
+/usr/sbin
+
+
+管理硬件操作的软件：操作系统（C语言+汇编语言-->Linux kernel）
+// 操作系统不可直接使用硬件（内存条）
+硬件
+
+命令：一个个的程序
+shell命令
+
+
+在Linux中一切皆文件，Java中一切皆对象
+操作文件：open read write close
+
+
+VFS：虚拟文件系统
+网卡驱动程序员
+提供统一标识
+
+pwd：print working directory
+
+
+man man:
+j 向下走
+k 向上走
+q 退出
+
+共八章
+Linux Kernel
+函数接口
+200多个
+
+第一章：用户命令
+第二章：系统调用
+第三章：C库
+第四章：
+第五章：配置文件
+第六章：
+第七章：
+第八章：系统
+
+
+Windows开发：装MSDN
+
+
+Linux两种命令：
+
+内置命令
+外部命令 
+
+shell程序+shell终端
+
+
+/
+n 向后找
+N 像前找
+
+ls -l -r:反向排序
+
+对时间排序
+
+ls -l -d :显示目录本身的信息
+KISS原则：组合功能
+
+. // 当前目录
+.. // 父目录
+
+目录相关的操作:
+
+创建：mkdir
+mkdir 目录名
+创建子目录:-p
+
+
+删除：
+rm 
+rm -r:递归删除
+rm -r -f : 强制删除，不给提示
+<==> rm -rf
+
+移动（改名）：
+mv 
+
+拷贝 cp （可以拷贝时间 cp -p ）
+
+
+通配符：
+* 任意多个字符
+? 一个任意字符
+
+
+C语言实现
+hehec-f-h0-3
+==>
+hehecdefgh0123
+
+
+// 查看文件内容
+cat 
+tac
+more：分屏显示 空格:下一屏 b:上一屏 q:直接退出
+head:只显示前n行
+tail：只显示末尾n行
+wc：-l 统计有多少行
+
+C语言实现有多少行多少个单词
+int cnt = 0;
+while(1){
+	fread(buf,1,fp);
+	break;
+	if( buf[i] == '\n'){
+		cnt++;
+	}
+}
+
+
+管道符,管道线(前面执行结果作为后面执行对象) 
+|
+head /etc/passwd | wc -l ：统计head几行
+
+
+echo abc > t.sh
+> 输出重定向
+>> 追加输出重定向
+
+tail -f hehe : 跟踪显示文件信息
+
+==========================================
+	2020/4/9
+==========================================
+MMU：内存管理单元（与预处理器配合在物理地址取数据）
+1、虚拟内存与物理内存的映射
+在物理内存中按页进行存储
+2、修改内存访问级别:0级 3级 
+
+PCB：进程控制块，位于内核(Kernel),以结构体的形式存在:
+{
+	进程id:系统中每个进程有唯一的id,在C语言中用pid_t类型表示，其实就是非负整数；
+	进程状态:准备、就绪、运行、挂起、停止；
+	进程切换时需要保持和恢复的一些CPU寄存器的值；
+	描述虚拟地址空间的信息；
+	描述控制终端的信息；
+	当前工作目录(Current Working Directory);
+	umask掩码；
+	文件描述符表，包含很多指向file结构体的指针；
+	和信号相关的信息；
+	用户id和组id;
+	会话(Session)和进程组；
+	进程可以使用资源上限(Resourse Limit);
+}
+
+ulimit -a：查看配置情况
+显示所有限制资料
+
+
+多任务多用户开源操作系统
+shell解析器
+
+环境变量：(接近于3G位置，和命令行参数在同一块CPU)
+是指在操作系统中用来指定操作系统运行环境得一些参数
+
+PATH
+/bin/date
+PATH环境变量新版本往前放
+
+echo $PATH
+echo $HOME
+echo $SHELL
+echo $LANG
+echo $TERM
+
+// 取环境变量 or 设置环境变量
+getenv
+setenv
+
+
+进程：fork
+创建进程
+函数fork：create a child process(创建子进程)
+返回值有两个
+ 1、返回子进程的id，非负整数 >0 （父进程的返回）
+ 2、返回0,调用成功才能返回0 (子进程的返回)
+ （指针传出参数，向外带）
+
+可执行文件
+
+
+回顾 ：
+pwd
+ls [option] argument
+	-l
+	-a
+	-r:反向查看
+	-R
+	-d:只显示目录
+	-t:按时间排序
+
+mkdir -p : 创建子目录，嵌套使用，强制创建父级目录
+rmkdir
+rm -r
+touch cp mv
+
+cat , more , head -n , tail -n , tail -n -f 
+wc -l : 统计文件大小
+
+
+vim 三种模式
+1、命令模式 i a 
+2、编辑模式 q w
+3、末行模式
+
+
+
+
+
+
+
+l:向右移动
+I:插入行首
+O:在当前行的上面行
+o:下面
+a:后面，i:前面
+A:行尾
+k:向上跑
+
+h:向前移动
+l:向后移动
+j:向下移动
+k:向上移动
+
+
+nyy:复制n行
+p粘贴
+ndd删除n行
+u:撤销
+Ctrl+r:再撤回去
+(两个栈实现删除撤销返回，实例有网页的访问)
+
+yw：只复制一个单词
+y$：当前位置到行尾
+y^：当前位置到行尾
+
+x:删除当前字符
+r:替换当前字符
+R:替换直至退出
+
+D:删除当前行
+dG:删除当前到最后
+
+>test.c 清空文档内容
+
+set nu:显示行号
+set nonu:消除显示行号
+
+vim /etc/vimrc:配置文件
+
+$:跳到最后
+
+/f ： 查找匹配字符
+
+替换文本
+%s/int/uint32_t :每一行第一个字符串被替换
+多个都替换+/g
+
+只替换n-m行:
+n,ms/INT/int/g
+
+
+可视化:
+Ctrl+v 块可视化：注释，I，//，Esc
+v
+shift+v
+
+~/.viminfo 存储vim命令
+
+:r text.c ,把text.c放在光标所在位置
+：3，5/;/\r{\r\r}\r/
+
+
+创建用户：
+useradd 用户名
+id 用户名:查看用户信息
+/home/用户名：家目录
+ls -a 配置信息
+//系统会在 /etc/passwd 增加用户信息
+vim /etc/shadow
+
+userdel wukong:之后，此时只有root可以访问
+userdel -r wukong:同时删除home目录
+usermod：修改用户的信息
+ -d 修改家目录
+ usermod -d /home/w1 w:将w的家目录改为w1，而不是w(其中w1为自建的目录mkdir w1)
+
+ useradd user1
+ 自然创建user1这个组
+ id user1
+ 将user1放在另一个组
+ groupadd group1
+ vim /etc/group 
+给一个组增加成员，加入组
+usermod -g zhenghong wukong
+
+useradd -g zhenghong bajie:创建用户同时加入组
+
+
+
+临时用户切换操作：
+su - bajie (switch user)
+：有 - 要密码
+root -> bajie <- exit
+不可su root 递归调用
+
+sudo：以自己的身份去运行其他用户身份才能运行的命令
+
+root:shutdown -h 20:20min之后关机
+zhenghong:不想关机
+	sudo shutdown -c
+	(改变sudo文件授权)
+
+=============================
+	2020/4/10
+=============================
+
+进程资源共享
+
+父子不同处：
+进程id不同
+运行时间不同
+fork返回值不同
+注意：全局变量各自独立
+
+
+
+IPC：进程之间的通信(interProcess Communication)
+
+管道（使用最简单） 函数：pipe
+	管道的一般读写行为
+	fifo:有名管道
+		用于非血缘关系之间进程通信
+
+	共享内存：
+		mmap
+		函数参数使用注意事项
+		用于非血缘关系之间进程通信
+
+信号（开销最小）
+
+
+共享映射区：无血缘关系
+本地套接字
+
+管道的概念：
+文件之间的数据传递
+伪文件
+共七种文件类型
+ - 普通文件
+ d 目录
+ l 软连接,符号链接，占磁盘存储，记录文件路径
+
+ 伪文件类型：（不会占用磁盘内存，并非真正的文件）
+ s 套接字
+ b 块设备
+ c 字符设备
+ p 管道
+
+写端流入，读端流出
+一个扇区（512字节） -8 4kb
+Linux内核环形队列实现FIFO
+对于管道来说：数据不可重复读取
+一端写一端读
+使用的局限性：
+不能自读自写
+单工通信：遥控，BB机
+半双工通信方式（数据只能在一个方向上流动）
+双向半双工（微信）
+双向全双工
+管道只能在有公共祖先的进程之间通信（有血缘关系的进程）
+
+#include<unistd.h>
+int pipe(int pipefd[2])
+
+
+
+
+// 
+共享内存
+	mmap函数：参数
+			返回值
+	借助共享内存存放磁盘文件
+		借助指针访问磁盘文件
+
+	父子进程之间，有血缘关系如何进行通信
+	匿名映射区
+
+	
+
+
+
+
+=============================
+	2020/4/15
+=============================	
+
+用户都是放在组里面
+给用户权限或者给一个组赋予权限
+
+tty：是一个终端
+
+cat test.c |  wc -l
+wc -l:统计有多少行
+|:管道，单向流动
+C语言 《C程序设计语言》		
+
+mkfifo :p文件需要同时写同时读，需要两个终端正常情况下
+my.p : echo asd > my.p ,另一个终端同时在读cat my.p,才能正常运行
+echo就是向文件写入
+>>追加输出重定向
+>覆盖输出
+
+Linux不认后缀，编译C同样要认识文件
+
+umask:0:八进制文件
+
+权限改变：
+chmod a-r a.out
+改变某个用户组对某个文件操作的权限
+u g o a:+-=:rwx
+
+chmod 0740 a.txt
+
+修改权限：root
+或者文件拥有着
+
+
+创建默认权限 0666 同时受umask影响
+umask取反再按位&
+
+目录的权限
+r:表示可以ls,读的权限，看目录中的内容
+w:touch
+wx:cd , 不可ls
+
+实际用户：命令调用者
+有效用户：权限检验时检验的是有效用户，设置了用户设置位之后，有效用户就是命令的拥有着
+
+用户设置位：只针对可以执行文件有效；
+典型的是passwd
+实际用户不能执行，但是有效用户可执行
+访问是否可以成功看的是有效用户是否有权限
+程序执行检验权限的时候就是检验有效用户，并非检验实际用户
+chmod u+s exe:要对exe可执行文件才能加s(小s)
+[root@localhost bin]# ls -ld passwd
+-rwsr-xr-x. 1 root root 30768 11月 24 2015 passwd
+
+// chmod u+s passwd
+
+粘贴位：只针对目录有效,对上传文件起一个保护作用
+主要是防止人品不好的人/xixixi\
+防止Ctrl+x
+此时只有root和文件拥有着可以删除，其他不可删除
+ls -ld /
+
+chmod  o+t /:此时已设粘贴位对根文件
+自己可以删自己的内容，不可以删别人的，但是可以拷贝
+
+
+网络配置：
+1、查看网络状态
+ifconfig
+ 配置为eth0 (ens33改为eth0)
+
+ 第一块网卡： eth0
+ 	PIC-E 网卡
+ 网卡改名
+  biosdevname net.ifnames
+  /etc/default/grub
+
+  	BIOS：硬件自检 => grub（在此阶段可以改网卡，选OS,引导程序）=>OS kernel(初始化各种IO设备)
+  	=> shell
+
+
+CentOS 7 : =>eth0
+配置网络之改网卡名
+1 vim /etc/default/grub
+
+2、update grub
+grub2-mkconfig -o /boot/grub2/grub.cfg	
+3、重启
+init 6
+
+
+
+命令查看网卡连接是否正常
+mii-tool eth0 
+
+[root@localhost grub]# mii-tool eth0 
+eth0: negotiated 100baseTx-FD, link ok
+
+配置网关:
+查看网关 查看路由
+route -n
+
+修改IP
+man ifconfig
+ifconfig eht0
+ ifconfig eth0 192.168.144.100
+
+
+修改网关
+service network restart
+
+IPADDR=
+NETMASK=255
+GATEWAY=
+DNS1=
+ONBOOT=yes
+
+
+
+TYPE=Ethernet
+BOOTPROTO=static
+IPADDR=192.168.144.100
+NETMASK=255.255.255.0
+GATEWAY=192.168.144.1
+DNS1=114.114.114.114
+NAME=eth0
+UUID=d3feb00f-ed26-4720-b3d9-b65770df03dc
+DEVICE=eth0
+ONBOOT=yes
+
+
+Linux
+虚拟机网络
+windows
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
